@@ -2,7 +2,7 @@ const express =require('express')
 const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const app = express()
-require('dotenv').config()
+
 
 let db, 
     dbConnectionStr = process.env.DB_STRING, // link to our db
