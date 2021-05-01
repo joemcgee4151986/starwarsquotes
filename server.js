@@ -3,6 +3,13 @@ const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const app = express()
 
+let db, 
+    dbConnectionStr = process.env.DB_STRING, // link to our db
+    dbName = 'todo'// name of the dbMongoClient.connect(dbConnectionStr, {useUnifiedTopology: true})
+    .then(client => {
+        console.log(`Hey, connected to ${dbName} database`) // informs us that we are connected to the database
+        db = client.db(dbName)
+    })
 const connectionString = 'mongodb+srv://yoda:Bowser12@cluster0.8t5ld.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 MongoClient.connect(connectionString, { useUnifiedTopology: true})
  .then(client => {
@@ -65,13 +72,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true})
         .catch(error => console.error(error))
     })
         
-    app.listen(3000, function() {
-        console.log('listening on 3000')
+    app.listen(process.env.PORT || PORT, () =>
+        console.log('Server is running!')) // confirms our server is running
 
 //place body-parser before your crud handlers
 
 })
 
-})
+
 
 
