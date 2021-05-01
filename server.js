@@ -2,10 +2,11 @@ const express =require('express')
 const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const app = express()
+require('dotenv').config()
 
 let db, 
     dbConnectionStr = process.env.DB_STRING, // link to our db
-    dbName = 'todo'// name of the dbMongoClient.connect(dbConnectionStr, {useUnifiedTopology: true})
+    dbName = 'Project 0'// name of the dbMongoClient.connect(dbConnectionStr, {useUnifiedTopology: true})
     .then(client => {
         console.log(`Hey, connected to ${dbName} database`) // informs us that we are connected to the database
         db = client.db(dbName)
